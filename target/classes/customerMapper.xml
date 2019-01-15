@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.buta.honto.dao.CustomerMapper">
+
+	<insert id="insertCustomer" parameterType="Customer">
+		insert into CUSTOMER (
+			CUSTID
+			, PASSWORD
+			, NAME
+			, EMAIL
+			, DIVISION
+			, IDNO
+			, ADDRESS
+		) values (
+			#{custId}
+			, #{password}
+			, #{name}
+			, #{email}
+			, #{division}
+			, #{idno}
+			, #{address}
+		)
+	</insert>
+	
+	<select id="selectCustomer" parameterType="String" resultType="Customer">
+		select * from CUSTOMER where CUSTID = #{id}
+	</select>
+	
+	<select id="selectLoginInfo" parameterType="String" resultType="Customer">
+		select * from CUSTOMER where CUSTID = #{0} and PASSWORD = #{1}
+	</select>
+
+<!--   <select id="selectBlog" resultType="Blog"> -->
+<!--     select * from Blog where id = #{id} -->
+<!--   </select> -->
+</mapper>
